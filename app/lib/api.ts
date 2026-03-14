@@ -8,7 +8,7 @@
  * The base URL can be overridden at runtime via localStorage (dev only).
  */
 
-const ENV_API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'https://stx.wgnr.es';
+const ENV_API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? 'https://stx.wgnr.es';
 const API_BASE_KEY = 'api:base_url';
 
 /** Returns the active API base URL. Dev override takes precedence. */
