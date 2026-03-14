@@ -1,0 +1,168 @@
+// Docs tab — section list + article reader
+
+// Section groups in the list view
+.docs-section {
+  margin-bottom: 20px;
+}
+
+.docs-section__title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  padding: 0 4px 8px;
+}
+
+.docs-article-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  margin-bottom: 6px;
+  text-align: left;
+  transition: background 0.15s;
+
+  &:active {
+    background: var(--bg-hover);
+  }
+}
+
+.docs-article-row__title {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.docs-article-row__arrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+// Article reader — rendered HTML content
+.docs-reader {
+  padding: 0 2px;
+}
+
+.docs-reader__html {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 24px 0 12px;
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 20px 0 10px;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 16px 0 8px;
+  }
+
+  h4, h5, h6 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 14px 0 6px;
+  }
+
+  p {
+    margin: 0 0 12px;
+  }
+
+  ul, ol {
+    margin: 0 0 12px;
+    padding-left: 24px;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  a {
+    color: var(--key-light);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  code {
+    font-family: ui-monospace, 'SF Mono', monospace;
+    font-size: 13px;
+    background: var(--bg-hover);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  pre {
+    background: var(--bg-hover);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 0 0 14px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    code {
+      background: none;
+      padding: 0;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  }
+
+  blockquote {
+    border-left: 3px solid var(--key);
+    margin: 0 0 12px;
+    padding: 8px 14px;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 14px;
+    font-size: 13px;
+  }
+
+  th, td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  th {
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 16px 0;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+}

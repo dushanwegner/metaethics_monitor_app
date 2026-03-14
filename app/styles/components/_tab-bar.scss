@@ -1,0 +1,151 @@
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 6px 0 env(safe-area-inset-bottom, 8px);
+  z-index: 100;
+}
+
+.tab-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 6px;
+  color: var(--text-muted);
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s;
+
+  &--active {
+    color: var(--key);
+  }
+
+}
+
+.tab-bar__label {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+// Shared tab content layout
+.tab-content {
+  min-height: 100dvh;
+  padding: env(safe-area-inset-top, 20px) 16px 72px;
+}
+
+.tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 20px;
+}
+
+.tab-header__title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.tab-header__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tab-header__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  color: var(--text-secondary);
+  transition: background 0.15s;
+
+  &:active {
+    background: var(--bg-hover);
+  }
+
+  &--spinning {
+    animation: tab-spin 0.8s linear infinite;
+  }
+}
+
+@keyframes tab-spin {
+  to { transform: rotate(360deg); }
+}
+
+.tab-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tab-empty {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--text-secondary);
+
+  p {
+    font-size: 15px;
+    margin-top: 8px;
+  }
+}
+
+.tab-empty__icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 16px;
+  height: 80px;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+// Connection status banner
+.conn-banner {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 16px;
+  border: none;
+  cursor: pointer;
+
+  &--offline {
+    background: var(--yellow-bg, #fef3cd);
+    color: var(--yellow, #856404);
+  }
+
+  &--error {
+    background: var(--red-bg);
+    color: var(--red);
+  }
+
+  &--checking {
+    background: var(--bg-card);
+    color: var(--text-muted);
+  }
+}

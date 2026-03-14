@@ -1,0 +1,161 @@
+// Ethical Scan Panel — stock detail section
+.ethics-panel {
+  padding: 16px;
+  margin-bottom: 16px;
+
+  &--loading {
+    min-height: 40px;
+  }
+}
+
+.ethics-panel__title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+// Scenario block
+.ethics-panel__scenario {
+  margin-bottom: 12px;
+}
+
+.ethics-panel__scenario-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ethics-panel__scenario-prompt {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+// Structure badges
+.ethics-panel__structures {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.ethics-panel__structure {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--bg-input);
+  color: var(--text);
+}
+
+.ethics-panel__vs {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Tension gauge
+.ethics-panel__tension {
+  margin-bottom: 14px;
+}
+
+.ethics-panel__tension-bar {
+  height: 4px;
+  background: var(--bg-input);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.ethics-panel__tension-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--key) 0%, #f59e0b 50%, var(--red) 100%);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+.ethics-panel__tension-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+// Actor verdict cards
+.ethics-panel__actors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ethics-panel__actor {
+  padding: 10px 12px;
+  background: var(--bg-input);
+  border-radius: 8px;
+}
+
+.ethics-panel__actor-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  color: var(--text-muted);
+}
+
+.ethics-panel__actor-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+}
+
+.ethics-panel__actor-choice {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+
+  &--a {
+    background: rgba(79, 193, 255, 0.15);
+    color: var(--key);
+  }
+
+  &--b {
+    background: rgba(248, 113, 113, 0.15);
+    color: var(--red);
+  }
+}
+
+.ethics-panel__actor-reasoning {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+// Summary
+.ethics-panel__summary {
+  padding: 10px 12px;
+  background: var(--bg-input);
+  border-radius: 8px;
+  border-left: 3px solid var(--key);
+  margin-bottom: 8px;
+
+  p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+}
+
+// Metadata
+.ethics-panel__meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: right;
+}

@@ -1,0 +1,67 @@
+.alarm-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+
+  &--triggered {
+    border-left: 3px solid var(--red);
+  }
+}
+
+.alarm-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.alarm-card__name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.alarm-card__badge {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--red);
+  background: rgba(220, 38, 38, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.alarm-card__condition {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+
+.alarm-card__hot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.alarm-card__hot-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--bg-hover);
+  overflow: hidden;
+}
+
+.alarm-card__hot-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: #f59e0b;
+  transition: width 0.3s;
+}
+
+.alarm-card__hot-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}

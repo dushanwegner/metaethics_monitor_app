@@ -1,0 +1,162 @@
+// Sync info (left of refresh button)
+.sync-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.3;
+}
+
+.sync-info__line {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+// Home / Dashboard tab
+.home-section {
+  margin-bottom: 24px;
+}
+
+.home-section__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+// Run summary rows
+.home-run {
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.home-run__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.home-run__name {
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  margin-right: 8px;
+}
+
+.home-run__date {
+  font-size: 12px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.home-run__bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.home-run__uid {
+  font-size: 12px;
+  font-family: ui-monospace, 'SF Mono', monospace;
+  color: var(--text-muted);
+}
+
+.home-run__elapsed {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+// Footer: logout + future settings
+.home-footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.home-footer__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+// API Token Panel (collapsible, inside home-footer)
+.api-token-panel {
+  margin-bottom: 4px;
+}
+
+.api-token-panel__body {
+  padding: 10px 0 6px;
+}
+
+.api-token-panel__token-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.api-token-panel__token {
+  flex: 1;
+  font-size: 11px;
+  font-family: ui-monospace, 'SF Mono', monospace;
+  word-break: break-all;
+  color: var(--text-body);
+  user-select: all;
+}
+
+.api-token-panel__action {
+  flex-shrink: 0;
+  padding: 4px;
+  color: var(--text-muted);
+  border-radius: 4px;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    opacity: 0.5;
+  }
+}
+
+.api-token-panel__meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.api-token-panel__hint {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-top: 4px;
+
+  code {
+    font-size: 10px;
+    background: var(--bg-card);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+}
+
+.api-token-panel__status {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.api-token-panel__error {
+  font-size: 12px;
+  color: var(--accent-red, #ef4444);
+}

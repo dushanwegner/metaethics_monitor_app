@@ -1,0 +1,43 @@
+'use client';
+
+import { useCallback, useRef, useState } from 'react';
+import TabBar, { type TabId, loadActiveTab, saveActiveTab } from './components/TabBar';
+import MonitorNewsTab from './tabs/MonitorNewsTab';
+import IdeasTab from './tabs/IdeasTab';
+import LoopLogTab from './tabs/LoopLogTab';
+import DocsTab from './tabs/DocsTab';
+
+const TABS: { id: TabId; Component: React.ComponentType }[] = [
+  { id: 'news', Component: MonitorNewsTab },
+  { id: 'ideas', Component: IdeasTab },
+  { id: 'loop', Component: LoopLogTab },
+  { id: 'docs', Component: DocsTab },
+];
+
+export default function HomePage() {
+  const [activeTab, setActiveTab] = useState<TabId>(loadActiveTab);
+
+  // Track which tabs have been visited — only mount those.
+  // Once visited, a tab stays mounted so its state persists.
+  const visitedRef = useRef<Set<TabId>>(new Set([activeTab]));
+
+  const selectTab = useCallback((tab: TabId) => {
+    visitedRef.current.add(tab);
+    setActiveTab(tab);
+    saveActiveTab(tab);
+  }, []);
+
+  return (
+    <>
+      {TABS.map(({ id, Component }) => {
+        if (!visitedRef.current.has(id)) return null;
+        return (
+          <div key={id} style={{ display: id === activeTab ? 'contents' : 'none' }}>
+            <Component />
+          </div>
+        );
+      })}
+      <TabBar active={activeTab} onSelect={selectTab} />
+    </>
+  );
+}

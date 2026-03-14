@@ -1,0 +1,13 @@
+// Unified dark-only palette — charcoal grays, no navy
+// Aligned with web app (base.css html.dark), slightly darker
+:root {
+  --bg: #181818;
+  --bg-card: #222222;
+  --bg-input: #2c2c2c;
+  --bg-hover: #2c2c2c;
+  --text: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #707070;
+  --border: #333333;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}

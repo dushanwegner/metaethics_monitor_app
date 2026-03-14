@@ -1,0 +1,99 @@
+// Square stock tile — used on Home (favorites) and Stocks tab
+// CSS grid auto-fills columns: min 90px, max 1fr — adapts to any screen width
+.stock-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+}
+
+.stock-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  aspect-ratio: 1;
+  padding: 10px 6px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s, opacity 0.1s;
+  overflow: hidden;
+  // Default: no bottom border
+  border-bottom: 3px solid transparent;
+
+  &:active {
+    transform: scale(0.96);
+    opacity: 0.85;
+  }
+
+  // Ethical tension bottom border — warm tones for high tension, cool for low
+  &--tension-high { border-bottom-color: var(--red); }
+  &--tension-medium { border-bottom-color: #f59e0b; }
+  &--tension-low { border-bottom-color: var(--key); }
+}
+
+// Sparkline SVG positioned as tile background
+.stock-tile__sparkline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
+
+// All text content sits above sparkline
+.stock-tile__star,
+.stock-tile__symbol,
+.stock-tile__price,
+.stock-tile__change {
+  position: relative;
+  z-index: 1;
+}
+
+.stock-tile__star {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  opacity: 0.4;
+  transition: color 0.15s, opacity 0.15s;
+
+  &--active {
+    color: #f59e0b;
+    opacity: 1;
+  }
+}
+
+.stock-tile__symbol {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stock-tile__price {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+  color: var(--text-secondary);
+}
+
+.stock-tile__change {
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+
+  &--up { color: var(--green); }
+  &--down { color: var(--red); }
+  &--flat { color: var(--text-muted); }
+}

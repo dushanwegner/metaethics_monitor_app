@@ -1,0 +1,102 @@
+// Per-tab hamburger menu dropdown
+.tab-menu {
+  position: relative;
+}
+
+.tab-menu__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.tab-menu__panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  min-width: 200px;
+  max-width: 280px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border);
+  z-index: 50;
+  overflow: hidden;
+  // Fade-in animation
+  animation: tab-menu-in 0.15s ease-out;
+}
+
+@keyframes tab-menu-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// Section grouping
+.tab-menu__section {
+  padding: 6px 0;
+
+  & + & {
+    border-top: 1px solid var(--border);
+  }
+}
+
+.tab-menu__section-title {
+  padding: 6px 14px 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+// Menu items
+.tab-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    background: var(--bg-hover);
+  }
+
+  &--active {
+    color: var(--text);
+    border-left-color: var(--key);
+    background: rgba(79, 193, 255, 0.06);
+  }
+}
+
+.tab-menu__item-label {
+  flex: 1;
+}
+
+.tab-menu__badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}

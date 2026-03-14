@@ -1,0 +1,131 @@
+.all-stocks__search {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.all-stocks__search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.all-stocks__search-input {
+  width: 100%;
+  padding: 10px 12px 10px 38px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 15px;
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--key);
+  }
+}
+
+.all-stocks__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .stock-card {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.all-stocks__fav {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--text-muted);
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s;
+
+  &--active {
+    color: #f59e0b;
+  }
+}
+
+.all-stocks__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.all-stocks__page-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  color: var(--text-secondary);
+  -webkit-tap-highlight-color: transparent;
+
+  &:disabled {
+    opacity: 0.3;
+  }
+
+  &:active:not(:disabled) {
+    background: var(--bg-hover);
+  }
+}
+
+.all-stocks__page-info {
+  font-size: 14px;
+  color: var(--text-secondary);
+  min-width: 60px;
+  text-align: center;
+}
+
+// Exchange filter pills
+.exchange-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.exchange-filter__pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+
+  &--active {
+    background: var(--key);
+    color: var(--key-text);
+    border-color: var(--key);
+  }
+
+  &:active:not(&--active) {
+    background: var(--bg-hover);
+  }
+}
+
+.exchange-filter__count {
+  font-size: 11px;
+  opacity: 0.7;
+}

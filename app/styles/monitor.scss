@@ -1,0 +1,209 @@
+/* Monitor app — News, Ideas, Loop Log tabs */
+
+/* Shared stats bar */
+.monitor-stats {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 0.78rem;
+  color: var(--text-secondary, #888);
+}
+.monitor-stat--good { color: #28a745; }
+.monitor-stat--pending { color: #e6a817; }
+
+/* News monitor list */
+.monitor-list {
+  display: flex;
+  flex-direction: column;
+}
+.monitor-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border, #2a2a2a);
+}
+.monitor-item--analyzed {
+  opacity: 0.7;
+}
+.monitor-item__title {
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.monitor-item__meta {
+  display: flex;
+  gap: 8px;
+  font-size: 0.72rem;
+  color: var(--text-secondary, #888);
+  margin-top: 3px;
+  flex-wrap: wrap;
+}
+.monitor-item__cat {
+  background: rgba(128,128,128,0.15);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+.monitor-item__scenario {
+  color: #7b1fa2;
+}
+.monitor-item__status--done {
+  color: #28a745;
+}
+
+/* Ideas list */
+.ideas-list {
+  display: flex;
+  flex-direction: column;
+}
+.idea-card {
+  border-bottom: 1px solid var(--border, #2a2a2a);
+}
+.idea-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 0;
+  cursor: pointer;
+  gap: 8px;
+}
+.idea-card__title {
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.4;
+  flex: 1;
+  min-width: 0;
+}
+.idea-card__meta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-shrink: 0;
+}
+.idea-card__score {
+  font-size: 0.68rem;
+  color: var(--text-secondary, #888);
+}
+.idea-card__body {
+  padding: 0 0 12px;
+  font-size: 0.82rem;
+}
+.idea-card__summary {
+  color: var(--text-secondary, #aaa);
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+.idea-card__dims {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.idea-dim {
+  padding: 4px 8px;
+  background: rgba(128,128,128,0.08);
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+.idea-card__voices {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.idea-card__voices-label {
+  font-size: 0.72rem;
+  color: var(--text-secondary, #888);
+}
+.idea-card__foot {
+  font-size: 0.72rem;
+  color: var(--text-secondary, #666);
+  display: flex;
+  gap: 12px;
+}
+
+/* Voice badges */
+.voice-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(128,128,128,0.15);
+}
+.voice-badge--the-analyst { color: #4fc3f7; background: rgba(79,195,247,0.15); }
+.voice-badge--the-satirist { color: #ff8a65; background: rgba(255,138,101,0.15); }
+.voice-badge--the-ethicist { color: #ce93d8; background: rgba(206,147,216,0.15); }
+.voice-badge--the-sketchwriter { color: #81c784; background: rgba(129,199,132,0.15); }
+
+/* Loop log */
+.loop-list {
+  display: flex;
+  flex-direction: column;
+}
+.loop-item {
+  border-bottom: 1px solid var(--border, #2a2a2a);
+}
+.loop-item__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 0;
+  cursor: pointer;
+  gap: 8px;
+}
+.loop-item__left {
+  flex: 1;
+  min-width: 0;
+}
+.loop-item__scenario {
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: block;
+}
+.loop-item__meta {
+  display: flex;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--text-secondary, #888);
+  margin-top: 3px;
+  align-items: center;
+}
+.loop-item__time {
+  font-size: 0.72rem;
+  color: var(--text-secondary, #666);
+  flex-shrink: 0;
+}
+.loop-item__body {
+  padding: 0 0 12px;
+}
+.loop-item__steps {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.loop-step {
+  font-size: 0.68rem;
+  padding: 2px 6px;
+  background: rgba(128,128,128,0.1);
+  border-radius: 3px;
+  color: var(--text-secondary, #aaa);
+}
+.loop-item__article {
+  margin-top: 6px;
+}
+.loop-item__article pre {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text-secondary, #aaa);
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 8px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+/* Spin animation for refresh buttons */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 1s linear infinite; }

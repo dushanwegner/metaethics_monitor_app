@@ -1,0 +1,44 @@
+// Scroll-aware sticky header (condensed bar on scroll)
+
+.scroll-header-expanded {
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-header-condensed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  // Safe area support for iOS notch
+  padding-top: env(safe-area-inset-top, 0px);
+
+  // Hidden by default — fade + slight slide
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+
+  &.scroll-header-condensed--instant {
+    transform: none;
+    transition: none;
+  }
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  &.scroll-header-condensed--instant.visible {
+    transform: none;
+  }
+}
