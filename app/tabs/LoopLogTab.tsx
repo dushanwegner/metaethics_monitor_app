@@ -1,8 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
-import { TbRefresh } from 'react-icons/tb';
-import { apiGet } from '../lib/api';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { TbRefresh, TbSend } from 'react-icons/tb';
+import { apiGet, apiPost } from '../lib/api';
 import { useAuth } from '../lib/AuthProvider';
 
 interface LoopEntry {
@@ -23,6 +23,7 @@ const KIND_LABELS: Record<string, string> = {
   adjust: 'Adjust',
   create: 'Create',
   note: 'Note',
+  feedback: 'You',
 };
 
 const KIND_CLASSES: Record<string, string> = {
@@ -31,6 +32,7 @@ const KIND_CLASSES: Record<string, string> = {
   adjust: 'loop-kind--adjust',
   create: 'loop-kind--create',
   note: 'loop-kind--note',
+  feedback: 'loop-kind--feedback',
 };
 
 export default function LoopLogTab() {
@@ -41,6 +43,10 @@ export default function LoopLogTab() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [expanded, setExpanded] = useState<number | null>(null);
   const [articleText, setArticleText] = useState<Record<string, string>>({});
+  const [showFullArticle, setShowFullArticle] = useState<string | null>(null);
+  const [commentText, setCommentText] = useState('');
+  const [commenting, setCommenting] = useState(false);
+  const commentRef = useRef<HTMLTextAreaElement>(null);
 
   const fetchEntries = useCallback(async (offset = 0, append = false) => {
     if (append) setLoadingMore(true);
@@ -150,12 +156,61 @@ export default function LoopLogTab() {
                     </div>
                   )}
 
-                  {/* Article preview for entries with a run */}
+                  {/* Article — toggle between preview and full */}
                   {entry.run_uid && articleText[entry.run_uid] && (
                     <div className="loop-item__article">
-                      <pre>{articleText[entry.run_uid].slice(0, 1000)}{articleText[entry.run_uid].length > 1000 ? '\n...' : ''}</pre>
+                      {showFullArticle === entry.run_uid ? (
+                        <>
+                          <pre>{articleText[entry.run_uid]}</pre>
+                          <button className="loop-article-toggle" onClick={() => setShowFullArticle(null)}>
+                            Collapse
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <pre>{articleText[entry.run_uid].slice(0, 600)}{articleText[entry.run_uid].length > 600 ? '\n...' : ''}</pre>
+                          {articleText[entry.run_uid].length > 600 && (
+                            <button className="loop-article-toggle" onClick={() => setShowFullArticle(entry.run_uid)}>
+                              Show full article ({articleText[entry.run_uid].split(/\s+/).length} words)
+                            </button>
+                          )}
+                        </>
+                      )}
                     </div>
                   )}
+
+                  {/* Comment box */}
+                  <div className="loop-comment-box">
+                    <textarea
+                      ref={expanded === entry.id ? commentRef : undefined}
+                      className="loop-comment-input"
+                      placeholder="Your feedback for the next loop round..."
+                      value={expanded === entry.id ? commentText : ''}
+                      onChange={(e) => setCommentText(e.target.value)}
+                      rows={2}
+                    />
+                    <button
+                      className="loop-comment-send"
+                      disabled={commenting || !commentText.trim()}
+                      onClick={async () => {
+                        if (!commentText.trim()) return;
+                        setCommenting(true);
+                        try {
+                          await apiPost('/api/v1/loop-log/add/', {
+                            kind: 'feedback',
+                            message: commentText.trim(),
+                            run_uid: entry.run_uid || '',
+                            details: { in_reply_to: entry.id },
+                          });
+                          setCommentText('');
+                          fetchEntries(); // refresh to show the new feedback entry
+                        } catch {}
+                        setCommenting(false);
+                      }}
+                    >
+                      <TbSend size={16} /> Send
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
