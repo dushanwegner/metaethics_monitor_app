@@ -11,8 +11,12 @@
 const ENV_API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? 'https://stx.wgnr.es';
 const API_BASE_KEY = 'api:base_url';
 
-/** Returns the active API base URL. Dev override takes precedence. */
+/** Returns the active API base URL.
+ *  In dev mode with empty ENV_API_BASE, always use same-origin (proxy).
+ *  localStorage override only applies when there's a real base URL configured. */
 export function getApiBase(): string {
+  // If env is empty (dev proxy mode), always use same-origin — ignore overrides
+  if (!ENV_API_BASE) return '';
   try {
     const override = localStorage.getItem(API_BASE_KEY);
     if (override) return override;
