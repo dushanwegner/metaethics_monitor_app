@@ -55,13 +55,14 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         setAuthStatus('unauthenticated');
         setConnStatus('online');
       } else if (isNetworkError(err)) {
-        // Device offline or server unreachable
+        // Server unreachable — go to login. The monitor app is useless
+        // without a server connection, and the login page shows connection
+        // errors more clearly than an "offline" banner over empty content.
+        setAuthStatus('unauthenticated');
         setConnStatus('offline');
       } else {
-        // Server error (500, CORS, etc.) — treat as unauthenticated rather
-        // than showing a scary "connection error" banner. The user can still
-        // try logging in; the login form shows its own error messages.
-        setAuthStatus(prev => prev === 'checking' ? 'unauthenticated' : prev);
+        // Server error (500, CORS, etc.) — treat as unauthenticated.
+        setAuthStatus('unauthenticated');
         setConnStatus('error');
       }
     } finally {
