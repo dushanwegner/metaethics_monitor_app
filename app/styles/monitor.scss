@@ -227,6 +227,86 @@
   padding: 0 0 12px;
 }
 
+/* Filter bar */
+.loop-filters {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.loop-filter {
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--border, #333);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--text-secondary, #888);
+  cursor: pointer;
+}
+.loop-filter:hover { color: var(--text, #ddd); }
+.loop-filter--active {
+  background: var(--text, #ddd);
+  color: var(--bg, #111);
+  border-color: var(--text, #ddd);
+}
+
+/* Article-type loop items */
+.loop-item--article {
+  border-left: 3px solid #64b5f6;
+  padding-left: 8px;
+  margin-left: -8px;
+}
+.loop-kind--article { color: #64b5f6; background: rgba(100,181,246,0.15); }
+
+/* Article titles + excerpts */
+.article-titles, .article-excerpts {
+  margin-bottom: 8px;
+}
+.article-titles__label, .article-excerpts__label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary, #666);
+  margin-bottom: 4px;
+}
+.article-title-option {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 3px 0;
+  color: var(--text, #ddd);
+}
+.article-excerpt-option {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding: 4px 0;
+  color: var(--text-secondary, #aaa);
+  border-bottom: 1px solid rgba(128,128,128,0.1);
+}
+.article-excerpt-option:last-child { border-bottom: none; }
+.article-meta-line {
+  font-size: 0.68rem;
+  color: var(--text-secondary, #666);
+  margin-bottom: 8px;
+}
+
+/* Publish button */
+.loop-publish-btn {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #81c784;
+  background: rgba(129,199,132,0.1);
+  border: 1px solid rgba(129,199,132,0.3);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.loop-publish-btn:hover { background: rgba(129,199,132,0.2); }
+
 /* Kind badges */
 .loop-kind {
   display: inline-block;
