@@ -1,11 +1,13 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import TabBar, { type TabId, loadActiveTab, saveActiveTab } from './components/TabBar';
 import MonitorNewsTab from './tabs/MonitorNewsTab';
 import IdeasTab from './tabs/IdeasTab';
 import LoopLogTab from './tabs/LoopLogTab';
 import DocsTab from './tabs/DocsTab';
+
+const DEFAULT_TAB: TabId = 'news';
 
 const TABS: { id: TabId; Component: React.ComponentType }[] = [
   { id: 'news', Component: MonitorNewsTab },
@@ -15,7 +17,18 @@ const TABS: { id: TabId; Component: React.ComponentType }[] = [
 ];
 
 export default function HomePage() {
-  const [activeTab, setActiveTab] = useState<TabId>(loadActiveTab);
+  // Always start with the default tab (avoids SSR hydration mismatch),
+  // then restore the saved tab on the client after mount.
+  const [activeTab, setActiveTab] = useState<TabId>(DEFAULT_TAB);
+  const mounted = useRef(false);
+
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+      const saved = loadActiveTab();
+      if (saved !== DEFAULT_TAB) setActiveTab(saved);
+    }
+  }, []);
 
   // Track which tabs have been visited — only mount those.
   // Once visited, a tab stays mounted so its state persists.
