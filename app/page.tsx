@@ -2,16 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import TabBar, { type TabId, loadActiveTab, saveActiveTab } from './components/TabBar';
-import MonitorNewsTab from './tabs/MonitorNewsTab';
-import IdeasTab from './tabs/IdeasTab';
+import ArticlesTab from './tabs/ArticlesTab';
 import LoopLogTab from './tabs/LoopLogTab';
 import DocsTab from './tabs/DocsTab';
 
-const DEFAULT_TAB: TabId = 'news';
+const DEFAULT_TAB: TabId = 'articles';
 
 const TABS: { id: TabId; Component: React.ComponentType }[] = [
-  { id: 'news', Component: MonitorNewsTab },
-  { id: 'ideas', Component: IdeasTab },
+  { id: 'articles', Component: ArticlesTab },
   { id: 'loop', Component: LoopLogTab },
   { id: 'docs', Component: DocsTab },
 ];

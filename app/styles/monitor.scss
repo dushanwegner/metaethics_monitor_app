@@ -342,6 +342,62 @@
   color: var(--text, #ddd);
 }
 
+/* Articles list */
+.articles-list {
+  display: flex;
+  flex-direction: column;
+}
+.art-card {
+  border-bottom: 1px solid var(--border, #2a2a2a);
+}
+.art-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 0;
+  cursor: pointer;
+  gap: 8px;
+}
+.art-card__left { flex: 1; min-width: 0; }
+.art-card__title {
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.4;
+  display: block;
+}
+.art-card__meta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 3px;
+  flex-wrap: wrap;
+}
+.art-card__actors {
+  font-size: 0.68rem;
+  color: var(--text-secondary, #888);
+}
+.art-card__published {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: #81c784;
+  background: rgba(129,199,132,0.15);
+}
+.art-card__time {
+  font-size: 0.68rem;
+  color: var(--text-secondary, #666);
+  flex-shrink: 0;
+}
+.art-card__body { padding: 0 0 12px; }
+.art-card__eval {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #aaa);
+  line-height: 1.5;
+  margin: 0 0 8px;
+  font-style: italic;
+}
+
 /* Spin animation for refresh buttons */
 @keyframes spin { to { transform: rotate(360deg); } }
 .spin { animation: spin 1s linear infinite; }
