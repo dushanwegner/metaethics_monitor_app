@@ -109,21 +109,7 @@ export default function LoginPage() {
                 required
               />
             </div>
-            {isDev && (
-              <div className="login-field">
-                <label htmlFor="serverUrl">Server URL</label>
-                <input
-                  id="serverUrl"
-                  type="url"
-                  value={serverUrl}
-                  onChange={(e) => {
-                    setServerUrl(e.target.value);
-                    setApiBase(e.target.value);
-                  }}
-                  placeholder="http://localhost:8000"
-                />
-              </div>
-            )}
+            {/* Server URL override — only useful on Capacitor, not in browser dev (proxy handles it) */}
             <button type="submit" className="login-button" disabled={loading}>
               {loading ? 'Signing in\u2026' : 'Sign In'}
             </button>
