@@ -86,7 +86,7 @@ export default function LoopLogTab() {
   return (
     <div className="tab-content">
       <header className="tab-header">
-        <h1>Loop Log</h1>
+        <h1>The Loop</h1>
         <button className="tab-header__action" onClick={() => fetchEntries()} aria-label="Refresh">
           <TbRefresh size={20} className={loading ? 'spin' : ''} />
         </button>

@@ -1,14 +1,14 @@
 'use client';
 
-import { TbArticle, TbActivity, TbBook } from 'react-icons/tb';
+import { TbNews, TbActivity, TbBook } from 'react-icons/tb';
 
-export type TabId = 'articles' | 'loop' | 'docs';
+export type TabId = 'news' | 'loop' | 'docs';
 
 const TAB_STORAGE_KEY = 'app:activeTab';
-const VALID_TABS: TabId[] = ['articles', 'loop', 'docs'];
+const VALID_TABS: TabId[] = ['news', 'loop', 'docs'];
 
-const ALL_TABS: { id: TabId; label: string; Icon: typeof TbArticle }[] = [
-  { id: 'articles', label: 'Articles', Icon: TbArticle },
+const ALL_TABS: { id: TabId; label: string; Icon: typeof TbNews }[] = [
+  { id: 'news', label: 'News', Icon: TbNews },
   { id: 'loop', label: 'Loop', Icon: TbActivity },
   { id: 'docs', label: 'Docs', Icon: TbBook },
 ];
@@ -22,7 +22,7 @@ export function loadActiveTab(): TabId {
     const raw = localStorage.getItem(TAB_STORAGE_KEY);
     if (raw && VALID_TABS.includes(raw as TabId)) return raw as TabId;
   } catch {}
-  return 'articles';
+  return 'loop';
 }
 
 interface Props {

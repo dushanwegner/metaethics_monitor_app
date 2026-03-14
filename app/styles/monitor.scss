@@ -11,6 +11,58 @@
 .monitor-stat--good { color: #28a745; }
 .monitor-stat--pending { color: #e6a817; }
 
+/* News add box */
+.news-add-box {
+  margin: 8px 0;
+  padding: 10px;
+  background: rgba(128,128,128,0.06);
+  border-radius: 6px;
+}
+.news-add-input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  line-height: 1.5;
+  border: 1px solid var(--border, #333);
+  border-radius: 4px;
+  background: rgba(0,0,0,0.2);
+  color: var(--text, #ddd);
+  resize: vertical;
+  box-sizing: border-box;
+}
+.news-add-input:focus { outline: none; border-color: #64b5f6; }
+.news-add-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+.news-add-btn {
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  background: #1976d2;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.news-add-btn:disabled { opacity: 0.4; }
+.news-add-cancel {
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  color: var(--text-secondary, #888);
+  background: transparent;
+  border: 1px solid var(--border, #333);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.news-status {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #aaa);
+  padding: 4px 0;
+}
+
 /* News monitor list */
 .monitor-list {
   display: flex;
