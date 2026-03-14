@@ -228,6 +228,27 @@
   color: var(--text, #ddd);
 }
 
+/* Narrative paragraphs */
+.loop-item__narrative {
+  margin-bottom: 10px;
+}
+.loop-item__narrative p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text, #ddd);
+  margin: 0 0 6px;
+}
+
+/* Detail tags (for arrays) */
+.loop-detail__tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  margin: 1px 3px 1px 0;
+  background: rgba(128,128,128,0.12);
+  border-radius: 3px;
+}
+
 /* Article preview */
 .loop-item__article {
   margin-top: 6px;

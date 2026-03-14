@@ -111,7 +111,10 @@ export default function LoopLogTab() {
                       {entry.score}/10
                     </span>
                   )}
-                  <span className="loop-item__message">{entry.message}</span>
+                  {/* Show first line as title, rest is detail */}
+                  <span className="loop-item__message">
+                    {entry.message.split('\n')[0]}
+                  </span>
                 </div>
                 <span className="loop-item__time">
                   {new Date(entry.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -120,21 +123,34 @@ export default function LoopLogTab() {
 
               {expanded === entry.id && (
                 <div className="loop-item__body">
-                  {/* Details JSON */}
+                  {/* Full message as paragraphs (skip first line — it's in the header) */}
+                  {entry.message.includes('\n') && (
+                    <div className="loop-item__narrative">
+                      {entry.message.split('\n').slice(1).map((line, i) => (
+                        line.trim() ? <p key={i}>{line}</p> : null
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Structured details — render lists nicely */}
                   {entry.details && Object.keys(entry.details).length > 0 && (
                     <div className="loop-item__details">
                       {Object.entries(entry.details).map(([key, val]) => (
                         <div key={key} className="loop-detail">
                           <span className="loop-detail__key">{key}:</span>
                           <span className="loop-detail__val">
-                            {typeof val === 'string' ? val : JSON.stringify(val)}
+                            {Array.isArray(val)
+                              ? val.map((item, i) => <span key={i} className="loop-detail__tag">{String(item)}</span>)
+                              : typeof val === 'object'
+                              ? JSON.stringify(val)
+                              : String(val)}
                           </span>
                         </div>
                       ))}
                     </div>
                   )}
 
-                  {/* Article preview for eval entries */}
+                  {/* Article preview for entries with a run */}
                   {entry.run_uid && articleText[entry.run_uid] && (
                     <div className="loop-item__article">
                       <pre>{articleText[entry.run_uid].slice(0, 1000)}{articleText[entry.run_uid].length > 1000 ? '\n...' : ''}</pre>
